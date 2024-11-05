@@ -1,7 +1,6 @@
 package gui;
 
 import javax.swing.*;
-
 import algorithm.RC4;
 
 import java.awt.event.*;
@@ -29,12 +28,11 @@ public class FormRC4 extends JFrame {
 
     public FormRC4() {
         initComponents();
-        JOptionPane.showMessageDialog(this, "Không được nhập các kí tự có giấu vào Plaintext VD: á à ạ ã.", "Chú ý", JOptionPane.ERROR_MESSAGE);
-
     }
     public JPanel initComponents() {
 
         this.rc4JPanel = new JPanel(null);
+        setLocationRelativeTo(null);
 
         btnEncrypt = new JButton("Encrypt"); // Tạo nút btnEncrypt dùng cho chức năng mã hóa.
         btnEncrypt.addActionListener(new ActionListener(){
@@ -51,8 +49,11 @@ public class FormRC4 extends JFrame {
         });
 
         btnExit = new JButton("Exit"); // Tạo nút btnExit để đóng ứng dụng.
-        btnExit.addActionListener(e -> System.exit(0)); //Thêm sử lí sự kiện cho nút Exit 
-
+        btnExit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
         jLabelPlain = new JLabel("Plain text"); // Tạo nhãn jLabelPlain để mô tả trường "Plain text" cho văn bản gốc.
         txtPlain = new JTextArea(); // Tạo JTextArea txtPlain để nhập văn bản gốc trước khi mã hóa.
         txtPlain.setColumns(20); // Đặt số cột mặc định cho JTextArea txtPlain.
@@ -105,18 +106,6 @@ public class FormRC4 extends JFrame {
         rc4JPanel.add(jLabelKey);
         rc4JPanel.add(jScrollKey);
 
-
-        
-        // Thêm rc4JPanel vào JFrame
-        add(rc4JPanel);
-
-        // Thiết lập JFrame
-        setTitle("RC4");
-        setSize(800, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setVisible(true);
-
         return rc4JPanel;
     } 
     private void btnDecryptActionPerformed(ActionEvent evt) {         
@@ -130,9 +119,18 @@ public class FormRC4 extends JFrame {
             JOptionPane.showMessageDialog(this, "Không được để trống key và Plaintext.", "Error", JOptionPane.ERROR_MESSAGE);
         else txtCipher.setText(RC4.encrypt(txtKey.getText(), txtPlain.getText()));
     }   
-    private static boolean errorChecking(String strings){
+    private void btnExitActionPerformed(ActionEvent evt) {
+        // Thoát chương trình
+        // MainScreen a = new MainScreen();
+        // cardLayout = a.getLayout();
 
-        return false;
+        // cardLayout.show(a.getPanelContainer(), "MainScreen");
+        // a.start();
+        System.exit(0);;
     }
+    // private static boolean errorChecking(String strings){
+
+    //     return false;
+    // }
 
 }
