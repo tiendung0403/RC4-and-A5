@@ -37,7 +37,6 @@ public class FormRC4 extends JFrame {
         this.rc4JPanel = new JPanel(null);
 
         btnEncrypt = new JButton("Encrypt"); // Tạo nút btnEncrypt dùng cho chức năng mã hóa.
-        btnEncrypt.setText("Encrypt"); // Đặt tên cho nút btnEncrypt là "Encrypt".
         btnEncrypt.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 btnEncryptActionPerformed(evt);
@@ -52,7 +51,6 @@ public class FormRC4 extends JFrame {
         });
 
         btnExit = new JButton("Exit"); // Tạo nút btnExit để đóng ứng dụng.
-        btnExit.setText("Exit"); // Đặt tên cho nút btnExit là "Exit".
         btnExit.addActionListener(e -> System.exit(0)); //Thêm sử lí sự kiện cho nút Exit 
 
         jLabelPlain = new JLabel("Plain text"); // Tạo nhãn jLabelPlain để mô tả trường "Plain text" cho văn bản gốc.
