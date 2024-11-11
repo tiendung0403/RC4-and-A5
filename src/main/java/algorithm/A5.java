@@ -237,7 +237,6 @@ public class A5 {
         StringBuilder result = new StringBuilder();
         
         int index = 0;
-        System.out.println(binaryString.length());
         
         while (true) {
         	
